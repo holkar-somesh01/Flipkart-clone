@@ -8,7 +8,7 @@ mongoose.connect(process.env.MONGO_URL)
 const app = express()
 app.use(express.json())
 app.use(express.static("uploads"))
-app.use(express.static(path.join(__dirname, "dist")))
+// app.use(express.static(path.join(__dirname, "dist")))
 app.use(cors({
     origin: true,
     credentials: true
@@ -21,7 +21,7 @@ app.use("/api/order", require("./routes/order.routes"))
 app.use("/api/suggest", require("./routes/suggest.routes"))
 
 app.use("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "dist", "index.html"))
+    // res.sendFile(path.join(__dirname, "dist", "index.html"))
     res.status(400).json({ message: "Resource Not Found" })
 })
 app.use((error, req, res, next) => {
