@@ -3,6 +3,7 @@ const fs = require("fs")
 const path = require("path")
 const Product = require("../models/Product")
 const Upload = require("../utils/Upload")
+const cloudinary = require("../utils/cloudinary.config")
 
 exports.getAllFeProducts = asyncHandler(async (req, res) => {
     const result = await Product.find()
@@ -15,7 +16,8 @@ exports.AddProdcut = asyncHandler(async (req, res) => {
             return res.status(400).json({ message: "Multer Error" })
         }
         if (req.file) {
-            await Product.create({ ...req.body, image: req.file.filename })
+            const { secure_url } = await cloudinary.uploader.upload(req.file.path)
+            await Product.create({ ...req.body, image: secure_url })
             console.log(req.file.filename)
             res.json({ message: "Product Add Success" })
         } else {
@@ -30,6 +32,7 @@ exports.updateProduct = asyncHandler(async (req, res) => {
 
 exports.deleteProduct = asyncHandler(async (req, res) => {
     const result = await Product.findById(req.params.id)
+    await cloudinary.uploader.destroy(result.image)
     fs.unlinkSync(path.join(__dirname, "..", "uploads", result.image))
     await Product.findByIdAndDelete(req.params.id)
     res.json({ message: "Product Delete Success" })

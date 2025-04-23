@@ -20,7 +20,7 @@ const Product = () => {
                     {
                         data && data.result.map(item => <div>
                             <div>
-                                <img className='h-[160px] w-full rounded-t-md' src={`${import.meta.env.VITE_BACKEND_URL}/${item.image}`} alt="" />
+                                <img className='h-[160px] w-full rounded-t-md' src={item.image} alt="" />
                                 <div className="card card-compact w-60 bg-white border hover:shadow-md hover:shadow-green-400 rounded-t-none rounded-b-md">
                                     <div className="card-body">
                                         <div>

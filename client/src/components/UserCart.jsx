@@ -79,7 +79,7 @@ const UserCart = () => {
                     ? <div className='md:flex justify-between bg-white items-center p-10'>
                         <div className='grid grid-cols-1 md:grid-cols-3 gap-2'>
                             {cart && cart.map(item => <div key={item.price} className="my-3 card card-compact w-[200px] bg-base-100 shadow-xl">
-                                <figure><img src={`${import.meta.env.VITE_BACKEND_URL}/${item.image}`} alt="prodcuts" /></figure>
+                                <figure><img src={item.image} alt="prodcuts" /></figure>
                                 <div className="card-body">
                                     <h2 className="card-title">{item.name}</h2>
                                     <p>{item.desc}</p>

@@ -141,7 +141,7 @@ const AdminProduct = () => {
                                                     <td className='text-black text-sm font-bold'>{item.Price}</td>
                                                     <td className='text-black text-sm font-bold'>{item.stock}</td>
                                                     <td className='text-black text-sm font-bold'>
-                                                        <img src={`${import.meta.env.VITE_BACKEND_URL}/${item.image}`} alt="Product-image" /></td>
+                                                        <img src={item.image} alt="Product-image" /></td>
                                                     <td className='text-black text-sm font-bold flex gap-5'>
                                                         <button className="btn btn-warning">Edit</button>
                                                         <button onClick={e => DeleteProduct(item._id)} className="btn btn-error">Delete</button>

@@ -4,6 +4,7 @@ const fs = require("fs")
 const path = require("path")
 const Upload = require("../utils/Upload")
 const Suggest = require("../models/Suggest")
+const cloudinary = require("../utils/cloudinary.config")
 
 exports.getAllSuggestProducts = asyncHandler(async (req, res) => {
     const result = await Suggest.find()
@@ -16,7 +17,8 @@ exports.AddSuggestProdcut = asyncHandler(async (req, res) => {
             return res.status(400).json({ message: "Multer Error" })
         }
         if (req.file) {
-            await Suggest.create({ ...req.body, image: req.file.filename })
+            const { secure_url } = await cloudinary.uploader.upload(req.file.path)
+            await Suggest.create({ ...req.body, image: secure_url })
             res.json({ message: "Suggested Add Success" })
         } else {
             return res.status(400).json({ message: "Thumb Image Is Requerd", err })

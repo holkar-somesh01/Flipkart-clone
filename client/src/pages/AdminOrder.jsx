@@ -35,7 +35,7 @@ const AdminOrder = () => {
                                                     key={item.id}>
                                                     <td>{item.products.map(p => <div className='grid grid-cols-2 my-2'>
                                                         <strong>{p.name}:{p.price}, </strong>
-                                                        <img className='h-10' src={`${import.meta.env.VITE_BACKEND_URL}/${p.image}`} alt="" />
+                                                        <img className='h-10' src={p.image} alt="" />
                                                     </div>)}</td>
                                                     <td>{item.status}</td>
                                                     <td>

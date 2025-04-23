@@ -20,7 +20,7 @@ const ProductTwo = () => {
                     ? <span className="loading loading-spinner loading-lg"></span>
                     : <div className='flex gap-10 overflow-y-hidden'>
                         {data && data.result.map(item => <div className='w-60'>
-                            <img className='h-[165px] w-full rounded-t-md object-cover' src={`${import.meta.env.VITE_BACKEND_URL}/${item.image}`} alt="" />
+                            <img className='h-[165px] w-full rounded-t-md object-cover' src={item.image} alt="" />
                             <div className="card card-compact w-60 bg-white border hover:shadow-md hover:shadow-green-400 rounded-t-none rounded-b-md">
                                 <div className="card-body">
                                     <div>

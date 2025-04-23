@@ -19,7 +19,7 @@ const SuggestProduct = () => {
                             : <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
                                 {data && data.result.map(item => <div div className='border border-black hover:border-green-400 hover:shadow-md hover:shadow-green-400 w-[200px] h-[300px] p-3 rounded-md'>
                                     <div className={`p-1 mb-2 w-10 text-white text-xs font-semibold rounded-md  text-center ${item.stock > 10 ? "bg-green-500" : "bg-red-500"}`}>{item.stock}</div>
-                                    <img className='h-32 w-full' src={`${import.meta.env.VITE_BACKEND_URL}/${item.image}`} alt="" />
+                                    <img className='h-32 w-full' src={item.image} alt="" />
                                     <div className='mt-3'>
                                         <p className='text-slate-500 text-xs font-semibold'>{item.desc}</p>
                                         <h1 className='text-black font-semibold'>{item.name}</h1>

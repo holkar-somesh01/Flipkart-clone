@@ -98,7 +98,7 @@ const PopularProduct = () => {
                                     PopularProductformik.setFieldValue('image', e.currentTarget.files[0]);
                                 }}
                                 className={`input input-bordered w-full my-2 ${PopularProductformik.errors.image && PopularProductformik.touched.image && "input-error my-2"}`} />
-                            <button type='submit' className="btn btn-primary w-full">Add</button>
+                            <button type='submit' className="btn btn-primary w-full">{AddPopularProductIsLoading ? "Adding Project..." : "Add"}</button>
                             <button className="btn">Close</button>
                         </form>
                     </div>
@@ -125,7 +125,7 @@ const PopularProduct = () => {
                             <td className='text-black text-sm font-bold'>{item.Price}</td>
                             <td className='text-black text-sm font-bold'>{item.stock}</td>
                             <td className='text-black text-sm font-bold'>
-                                <img src={`${import.meta.env.VITE_BACKEND_URL}/${item.image}`} alt="Product-image" /></td>
+                                <img src={item.image} alt="Product-image" /></td>
                             <td className='text-black text-sm font-bold flex gap-5'>
                                 <button className="btn btn-warning">Edit</button>
                                 <button onClick={e => DeletePopularProduct(item._id)} className="btn btn-error">Delete</button>
